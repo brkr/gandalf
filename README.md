@@ -1,4 +1,4 @@
-# Gandalf
+Gandalf
 =========
 Form validation library for Android.
 
