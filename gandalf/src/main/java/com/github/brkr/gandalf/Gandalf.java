@@ -16,15 +16,17 @@ public class Gandalf {
      * Validation rules
      */
     private List<Balrog> balrogs;
+    private List<RuleException> errors;
 
     public Gandalf() {
         balrogs = new ArrayList<>();
+        errors = new ArrayList<>();
     }
 
     /**
      * Generates validation rules for EditText etc.
      */
-    public Balrog load(EditText editText){
+    public Balrog load(EditText editText) {
         Balrog balrog = Balrog.Builder.build(editText);
         balrogs.add(balrog);
         return balrog;
@@ -33,21 +35,29 @@ public class Gandalf {
 
     /**
      * This method just simply return rules pass or not
-     * @return boolean
+     *
+     * @return validation result
      */
-    public boolean shallIPass(){
+    public boolean shallIPass() {
         boolean check = true;
 
         for (Balrog balrog : balrogs) {
 
             try {
                 balrog.check();
-            }catch (RuleException e){
+            } catch (RuleException e) {
                 check = false;
+                errors.add(e);
             }
         }
-
         return check;
     }
 
+    /**
+     * Return all validation errors.
+     * @return validation error list
+     */
+    public List<RuleException> getErrors() {
+        return errors;
+    }
 }

@@ -1,29 +1,16 @@
 package com.github.brkr.gandalf;
 
-import android.test.mock.MockContext;
-import android.text.Editable;
-import android.widget.EditText;
+import com.github.brkr.gandalf.utils.RuleTest;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * @Author :  berkergucur (brkr.gcr@gmail.com) - 06/03/16.
  */
-public class MinimumRuleTest {
+public class MinimumRuleTest extends RuleTest {
 
-    EditText mEditText;
-    Editable mEditable;
-
-    @Before
-    public void setUp() throws Exception {
-        MockContext context = new MockContext();
-        mEditText = Mockito.mock(EditText.class);
-        mEditable = Mockito.mock(Editable.class);
-    }
 
     @Test
     public void testMinimumShouldReturnTrueWhenLengthEqualValueLength() throws Exception {
@@ -50,11 +37,6 @@ public class MinimumRuleTest {
         setMockText(testStr);
         gandalf.load(mEditText).min(4);
         assertEquals(gandalf.shallIPass(), true);
-    }
-
-    private void setMockText(String testStr) {
-        Mockito.when(mEditText.getText()).thenReturn(mEditable);
-        Mockito.when(mEditable.toString()).thenReturn(testStr);
     }
 
 }

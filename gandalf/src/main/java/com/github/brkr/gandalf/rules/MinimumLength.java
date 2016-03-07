@@ -1,7 +1,6 @@
 package com.github.brkr.gandalf.rules;
 
 import com.github.brkr.gandalf.Rule;
-import com.github.brkr.gandalf.rules.exceptions.MinimumException;
 import com.github.brkr.gandalf.rules.exceptions.RuleException;
 
 /**
@@ -21,5 +20,19 @@ public class MinimumLength implements Rule {
             return true;
         else
             throw new MinimumException();
+    }
+
+
+    public static class MinimumException extends RuleException {
+
+        private final static String ERROR_MESSAGE = "Length minimum ";
+
+        public MinimumException(String message) {
+            super(message);
+        }
+
+        public MinimumException() {
+            super(ERROR_MESSAGE);
+        }
     }
 }
