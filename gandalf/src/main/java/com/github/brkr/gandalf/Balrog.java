@@ -2,22 +2,20 @@ package com.github.brkr.gandalf;
 
 import android.widget.EditText;
 
-import com.github.brkr.gandalf.rules.MaximumLength;
-import com.github.brkr.gandalf.rules.MinimumLength;
+import com.github.brkr.gandalf.rules.RuleDecorator;
 import com.github.brkr.gandalf.rules.exceptions.RuleException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author :  berkergucur (brkr.gcr@gmail.com) - 06/03/16.
  */
-public class Balrog  implements RuleStrategy{
+public class Balrog extends RuleDecorator{
 
     private EditText mEditText;
-    private List<Rule> rules;
 
     public Balrog(EditText mEditText) {
+        super();
         this.mEditText = mEditText;
         rules = new ArrayList<>();
     }
@@ -31,22 +29,6 @@ public class Balrog  implements RuleStrategy{
             String value = mEditText.getText().toString();
             rule.execute(value);
         }
-    }
-
-    /**
-     *
-     * @param length min size of length
-     */
-    @Override
-    public RuleStrategy min(int length){
-        rules.add(new MinimumLength(length));
-        return this;
-    }
-
-    @Override
-    public RuleStrategy max(int length) {
-        rules.add(new MaximumLength(length));
-        return this;
     }
 
     public static class Builder{

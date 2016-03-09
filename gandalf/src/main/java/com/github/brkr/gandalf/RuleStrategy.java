@@ -1,10 +1,13 @@
 package com.github.brkr.gandalf;
 
+import com.github.brkr.gandalf.rules.RuleDecorator;
+
 /**
  * @author :  berkergucur (brkr.gcr@gmail.com) - 07/03/16.
  */
 public interface RuleStrategy {
 
-    RuleStrategy min(int length);
-    RuleStrategy max(int length);
+    RuleDecorator min(int length);
+    RuleDecorator max(int length);
+    RuleDecorator email(String email);
 }
