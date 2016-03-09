@@ -12,6 +12,15 @@ import static org.junit.Assert.assertEquals;
 public class EmailRuleTest extends RuleTest {
 
     @Test
+    public void nullStringShouldReturnFalse() throws Exception {
+        Gandalf gandalf = new Gandalf();
+        String testStr = null;
+        setMockText(testStr);
+        gandalf.load(mEditText).email(testStr);
+        assertEquals(gandalf.shallIPass(), false);
+    }
+
+    @Test
     public void emptyStringShouldReturnFalse() throws Exception {
         Gandalf gandalf = new Gandalf();
         String testStr = "";
