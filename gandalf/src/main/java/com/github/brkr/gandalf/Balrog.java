@@ -2,7 +2,6 @@ package com.github.brkr.gandalf;
 
 import android.widget.EditText;
 
-import com.github.brkr.gandalf.rules.RuleDecorator;
 import com.github.brkr.gandalf.rules.exceptions.RuleException;
 
 import java.util.ArrayList;

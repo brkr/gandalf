@@ -1,7 +1,9 @@
-package com.github.brkr.gandalf.rules;
+package com.github.brkr.gandalf;
 
-import com.github.brkr.gandalf.Rule;
-import com.github.brkr.gandalf.RuleStrategy;
+import com.github.brkr.gandalf.rules.EmailRule;
+import com.github.brkr.gandalf.rules.IPAddress;
+import com.github.brkr.gandalf.rules.MaximumLength;
+import com.github.brkr.gandalf.rules.MinimumLength;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class RuleDecorator implements RuleStrategy {
 
     protected List<Rule> rules;
+
     /**
      *
      * @param length min size of length
@@ -30,6 +33,17 @@ public class RuleDecorator implements RuleStrategy {
     @Override
     public RuleDecorator email(String email) {
         rules.add(new EmailRule());
+        return this;
+    }
+
+    /**
+     *
+     * @param ipAddress IPV4 address
+     * @return
+     */
+    @Override
+    public RuleDecorator ipAddress(String ipAddress) {
+        rules.add(new IPAddress());
         return this;
     }
 }
