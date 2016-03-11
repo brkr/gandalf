@@ -4,6 +4,7 @@ import com.github.brkr.gandalf.rules.EmailRule;
 import com.github.brkr.gandalf.rules.IPAddress;
 import com.github.brkr.gandalf.rules.MaximumLength;
 import com.github.brkr.gandalf.rules.MinimumLength;
+import com.github.brkr.gandalf.rules.URLRule;
 
 import java.util.List;
 
@@ -44,6 +45,12 @@ public class RuleDecorator implements RuleStrategy {
     @Override
     public RuleDecorator ipAddress(String ipAddress) {
         rules.add(new IPAddress());
+        return this;
+    }
+
+    @Override
+    public RuleDecorator url(String rule) {
+        rules.add(new URLRule());
         return this;
     }
 }

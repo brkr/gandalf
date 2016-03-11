@@ -9,4 +9,5 @@ public interface RuleStrategy {
     RuleDecorator max(int length);
     RuleDecorator email(String email);
     RuleDecorator ipAddress(String ipAddress);
+    RuleDecorator url(String rule);
 }
