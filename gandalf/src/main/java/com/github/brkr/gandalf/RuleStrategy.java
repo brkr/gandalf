@@ -7,8 +7,8 @@ public interface RuleStrategy {
 
     RuleDecorator min(int length);
     RuleDecorator max(int length);
-    RuleDecorator email(String email);
     RuleDecorator ipAddress(String ipAddress);
     RuleDecorator url(String rule);
     RuleDecorator hasUpperCase(String value);
+    RuleDecorator hasLowerCase(String value);
 }

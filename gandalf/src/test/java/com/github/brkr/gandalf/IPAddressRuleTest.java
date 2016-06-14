@@ -46,6 +46,7 @@ public class IPAddressRuleTest extends RuleTest {
         gandalf.load(mEditText).ipAddress(testStr);
         assertEquals(gandalf.shallIPass(), false);
     }
+    
     @Test
     public void over256AddressShouldReturnFalse() throws Exception {
         Gandalf gandalf = new Gandalf();
