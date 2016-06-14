@@ -10,4 +10,5 @@ public interface RuleStrategy {
     RuleDecorator email(String email);
     RuleDecorator ipAddress(String ipAddress);
     RuleDecorator url(String rule);
+    RuleDecorator hasUpperCase(String value);
 }

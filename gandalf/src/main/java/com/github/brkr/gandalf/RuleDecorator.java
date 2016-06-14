@@ -1,6 +1,7 @@
 package com.github.brkr.gandalf;
 
 import com.github.brkr.gandalf.rules.EmailRule;
+import com.github.brkr.gandalf.rules.HasUpperCase;
 import com.github.brkr.gandalf.rules.IPAddress;
 import com.github.brkr.gandalf.rules.MaximumLength;
 import com.github.brkr.gandalf.rules.MinimumLength;
@@ -51,6 +52,12 @@ public class RuleDecorator implements RuleStrategy {
     @Override
     public RuleDecorator url(String rule) {
         rules.add(new URLRule());
+        return this;
+    }
+
+    @Override
+    public RuleDecorator hasUpperCase(String value) {
+        rules.add(new HasUpperCase());
         return this;
     }
 }
